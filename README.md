@@ -19,6 +19,7 @@ sudo apt-get install build-essential zlib1g-dev libsdl2-dev libjpeg-dev nasm tar
 sudo apt-get install libboost-all-dev
 sudo apt-get install python3-dev python3-pip
 pip3 install numpy
+pip3 install vizdoom==1.1.9     # 1.1.10 doesn't seem to work yet on Ubuntu 18.04
 ```
 
 OpenCV3 can be installed as below:
