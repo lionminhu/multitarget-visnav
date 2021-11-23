@@ -74,10 +74,11 @@ The codes are modified versions of `microsoft/MazeExplorer` repository ([link](h
 
 If you wish to cite this environment, please consider using the below BibTeX for reference:
 ```
-@inproceedings{kim2021goal,
+@article{kim2021goal,
   title={Goal-Aware Cross-Entropy for Multi-Target Reinforcement Learning},
   author={Kim, Kibeom and Lee, Min Whoo and Kim, Yoonsung and Ryu, JeHwan and Lee, Minsu and Zhang, Byoung-Tak},
-  booktitle={Thirty-Fifth Conference on Neural Information Processing Systems},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
   year={2021}
 }
 
