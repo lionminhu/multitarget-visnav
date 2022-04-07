@@ -2,6 +2,7 @@
 
 import logging
 import os
+import random
 
 import gym
 import gym.spaces
@@ -231,6 +232,9 @@ class VizDoom(gym.Env):
         observation = self._process_image()
         observation = np.array([list(observation)] * self.action_frame_repeat)
 
+        # select a target object for instruction
+        self.goal = random.randrange(self.num_obj_to_spawn)
+
         return observation
 
 
@@ -238,7 +242,7 @@ class VizDoom(gym.Env):
         """
         Returns the index of the goal
         """
-        return int(self.env.get_game_variable(GameVariable.USER5))
+        return self.goal
 
 
     def step(self, action):
@@ -282,7 +286,6 @@ class VizDoom(gym.Env):
             observation = self._process_image()
             obs_batch.append(observation)
 
-            goal = self.get_goal_idx()
             last_obj_picked = int(
                 self.env.get_game_variable(GameVariable.USER6)
             )
@@ -300,7 +303,7 @@ class VizDoom(gym.Env):
                     done = True
                 self.last_obj_picked = last_obj_picked
                 just_picked = last_obj_picked
-                if just_picked == goal:
+                if just_picked == self.goal:
                     reward = self.goal_reward
                 else:
                     reward = (-1.0) * self.non_goal_penalty
@@ -309,9 +312,8 @@ class VizDoom(gym.Env):
 
             x_pos = self.env.get_game_variable(GameVariable.POSITION_X)
             y_pos = self.env.get_game_variable(GameVariable.POSITION_Y)
-            # self.env.get_game_variable(GameVariable.USER6)
 
-            info = {'goal': goal, 'last_obj_picked': last_obj_picked,
+            info = {'goal': self.goal, 'last_obj_picked': last_obj_picked,
                     'just_picked': just_picked, 'x_pos': x_pos, 'y_pos': y_pos}
             info_batch.append(info)
 
