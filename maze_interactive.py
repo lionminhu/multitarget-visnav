@@ -56,7 +56,8 @@ if __name__ == '__main__':
             convert_img = False
             continue
         total_reward += reward
-        print('total reward: {}, dones: {}, info: {}'.format(total_reward, dones, info))
+        print('total reward: {}, dones: {}'.format(total_reward, dones))
+        # print(f"info: {info}")
         if dones:
             obs = env.reset()
             goal = targets[env.get_goal_idx()]
