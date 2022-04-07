@@ -7,10 +7,8 @@ This repository contains [ViZDoom](https://github.com/mwydmuch/ViZDoom)-based mu
 This build has been confirmed to run on below system and libraries:
 - Ubuntu 18.04+
 - Python 3.8.10 (via conda)
-- ViZDoom >=1.1.7, <=1.1.9
-- OpenCV3 3.2
-
-Both ViZDoom dependencies and OpenCV3 are required. The installation procedures are explained below.
+- vizdoom 1.1.9
+- opencv-python 4.5.5
 
 First, using Conda ([installation instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)), a new virtual environment can be created. Virtual environment helps manage dependencies, as well as keep dependencies isolated from other installed modules.
 ```
