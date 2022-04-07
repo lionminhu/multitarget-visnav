@@ -6,33 +6,37 @@ This repository contains [ViZDoom](https://github.com/mwydmuch/ViZDoom)-based mu
 ## Installation
 This build has been confirmed to run on below system and libraries:
 - Ubuntu 18.04+
-- Python 3.6+
+- Python 3.8.10 (via conda)
 - ViZDoom >=1.1.7, <=1.1.9
 - OpenCV3 3.2
 
-Both ViZDoom dependencies and OpenCV3 are required.
+Both ViZDoom dependencies and OpenCV3 are required. The installation procedures are explained below.
+
+First, using Conda ([installation instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)), a new virtual environment can be created. Virtual environment helps manage dependencies, as well as keep dependencies isolated from other installed modules.
+```
+conda create -n multitarget-visnav python==3.8.10
+conda activate multitarget-visnav
+```
 
 ViZDoom can be installed as below (For additional details, please refer to [building instructions for ViZDoom](https://github.com/mwydmuch/ViZDoom/blob/master/doc/Building.md)):
 ```
 sudo apt-get update
 sudo apt-get install build-essential zlib1g-dev libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake git libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev unzip
 sudo apt-get install libboost-all-dev
-sudo apt-get install python3-dev python3-pip
-pip3 install numpy
-pip3 install vizdoom==1.1.9     # 1.1.10 doesn't seem to work yet on Ubuntu 18.04
+pip install numpy
+pip install vizdoom==1.1.9     # 1.1.10 doesn't seem to work yet on Ubuntu 18.04
 ```
 
 OpenCV3 can be installed as below:
 ```
-sudo apt-get update
-sudo apt-get install python3-opencv
+pip install opencv-python
 ```
 
 Finally, this repository can be installed as below:
 ```
 git clone https://github.com/lionminhu/multitarget-visnav.git
 cd multitarget-visnav
-pip3 install -e .
+pip install -e .
 ```
 
 ## Available Maps
