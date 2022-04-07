@@ -245,6 +245,26 @@ class VizDoom(gym.Env):
         return self.goal
 
 
+    def set_goal(self, goal):
+        """
+        Manually select the goal object for the current episode.
+        :param target: index (int), or the name of goal object type (str).
+         The possible arguments are
+           {0, 1, 2, 3, "Card", "Armor", "Skull", "Bonus"}.
+         The indices 0, 1, 2, 3 respectively refer to "Card", "Armor",
+         "Skull", and "Bonus".
+        """
+        targets = ['Card', 'Armor', 'Skull', 'Bonus']
+        assert isinstance(goal, str) or isinstance(goal, int), \
+            "`goal` must be type `str` or `int`."
+        assert (goal in range(len(targets))) or (goal in targets), \
+            f"Invalid goal provided: {goal}"
+        if isinstance(goal, str):
+            self.goal = targets.index(goal)
+        else:
+            self.goal = goal
+
+
     def step(self, action):
         """
         Perform the specified action for the self.action_frame_repeat ticks
